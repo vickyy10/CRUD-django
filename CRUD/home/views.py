@@ -11,6 +11,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
+    l=request.GET.get("name")
+    print(l)
     context={
         'dict':Car.objects.all()
     }
@@ -44,10 +46,13 @@ def add_car(request):
 def update_car(request,id):
     temp=Car.objects.get(pk=id)
     new_carfrm = carform(instance=temp)
+
     if request.method == 'POST':
         new_carfrm=carform(request.POST,request.FILES,instance=temp)
+
         if new_carfrm.is_valid():
             new_carfrm.save()
+
             return redirect('home')
 
     return render(request,'update.html',{'up_frm':new_carfrm})
@@ -98,10 +103,13 @@ def user_login(request):
     return render(request,'login.html',{'err_msg':err_msg})
 
 
+
 def user_logout(request):
 
     logout(request)
 
-    return redirect('login')
+    return redirect('home')
+
+  
 
 
