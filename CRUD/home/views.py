@@ -95,7 +95,7 @@ def user_login(request):
         password=request.POST['password']
         user=authenticate(username=username,password=password)
         print("r3gergtrgre",user)
-        if user:
+        if user is not None:
             login(request,user)
             return redirect('home')
         else:
