@@ -28,13 +28,7 @@ def add_car(request):
         'db_form':carform()
     }
 
-    if request.POST:
-        carname=request.POST['carname']
-        catagory=request.POST['catagory']
-        discription=request.POST['discription']
-        image=request.FILES['image']
-        new=Car(carname=carname,catagory=catagory,discription=discription,image=image)
-        new.save()
+
 
     return render(request,'addcar.html',context)
 
@@ -110,7 +104,3 @@ def user_logout(request):
     logout(request)
 
     return redirect('home')
-
-  
-
-
