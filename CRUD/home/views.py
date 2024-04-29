@@ -62,7 +62,7 @@ def update_car(request,id):
 
 @login_required(login_url='login')
 def delete_car(request,id):
-    temp=Car.objects.get(id=id)
+    temp=Car.objects.get(pk=id)
     temp.delete()
     return redirect('home')
 
@@ -94,7 +94,7 @@ def user_login(request):
         username=request.POST['username']
         password=request.POST['password']
         user=authenticate(username=username,password=password)
-        print("r3gergtrgre",user)
+       
         if user:
             login(request,user)
             return redirect('home')
