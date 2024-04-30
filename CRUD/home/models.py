@@ -7,3 +7,8 @@ class Car(models.Model):
     catagory=models.CharField(max_length=100)
     discription=models.TextField()
     image = models.ImageField(upload_to='images/')
+
+
+class name(models.Model):
+    usern=models.ForeignKey(max_length=100)
+    place=models.ManyToManyField()

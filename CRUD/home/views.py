@@ -72,20 +72,7 @@ def delete_car(request,id):
 
 
 
-def signup(request):
-    user=None
-    error_msg=None
-    if request.POST:
-        username=request.POST['username']
-        password=request.POST['password']
 
-        try:
-            user=User.objects.create_user(username=username,password=password)
-           
-        except Exception as e:
-            error_msg=str(e)
-
-    return render(request,'signup.html',{'user':user,'error_msg':error_msg})
 
 
 def user_login(request):
